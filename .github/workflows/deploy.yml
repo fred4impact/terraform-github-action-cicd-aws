@@ -21,13 +21,7 @@ jobs:
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-      
-      - name: Configure AWS credentials
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_REGION=us-east-1" >> $GITHUB_ENV
-
+    
       - name: Terraform Init
         run: terraform init
         working-directory: ./terra-vpc
@@ -45,7 +39,7 @@ jobs:
         id: apply
         run: terraform apply -auto-approve
         working-directory: ./terra-vpc
-
+        
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
