@@ -1,0 +1,46 @@
+name: Terraform aws CI CD pipeline deployment 
+run - name:  ${{ github.actor }} has triggard the pipeline
+
+on:
+  push:
+    branches:
+      - 'main'
+      
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: us-east-1
+
+jobs:
+  build - infrastructure:
+    name: Terraform-AWS-CI-CD
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Checkout the repository #
+        uses: actions/checkout@v2
+       
+        # Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+        # Terraform Initializati
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./terra-vpc
+
+        # Terraform Plan
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan
+
+        # Terraform Apply
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve
+        working-directory: ./terra-vpc
+
+        # Terraform Destroy
+      - name: Terraform Destroy
+        id: destroy
+        run: terraform destroy -auto-approve
+        working-directory: ./terra-vpc
