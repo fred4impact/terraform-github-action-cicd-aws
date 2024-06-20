@@ -1,32 +1,10 @@
-'''
-# terraform-github-action-cicd-aws
-terraform mudules for provisioning aws resource using github action CI/CD
+# Terraform GitHub Actions CI/CD AWS
 
-## VPC Infrastructure with Terraform and GitHub Actions
+## This project involves creating AWS infrastructure to deploy a web server using Infrastructure as Code (IaC) with Terraform modules and establishing a CI/CD pipeline with GitHub Actions to automate the deployment process upon any changes.
+## Project Overview
 
-## This tutorial demonstrates how I create a Virtual Private Cloud (VPC) infrastructure using Terraform and automate its deployment using GitHub Actions.
-Achievements
+### The main objectives of this project were to:
 
-## Setting Up Terraform
-I installed and configured Terraform on my local machine.
-
-## Writing Terraform Code
-I wrote Terraform code to define the VPC infrastructure, including networks, subnets, security groups, security groups, Ec2, application load balancer and more.
-
-## Initializing and Applying Terraform
-I initialized the Terraform project and applied the code to create the VPC.
-
-## GitHub Repository Setup
-I set up a GitHub repository to store the Terraform code, including creating a README, .gitignore, and other essential files.
-
-## GitHub Actions Configuration
-I configured GitHub Actions workflows to automate the deployment of the Terraform code.
-I managed secrets and set up workflow triggers.
-
-## Push to GitHub
-I pushed the Terraform code to the GitHub repository and triggered the GitHub Actions workflow.
-
-## Monitor and Verify
-I monitored the progress of the GitHub Actions workflow and verified the successful deployment of the VPC infrastructure.
-
-'''
+    Set up and configure Terraform for infrastructure management.
+    Write and manage Terraform modules to define resources like VPC, subnets, security groups, EC2 instances, and application load balancers across multiple availability zones.
+    Create a CI/CD pipeline using GitHub Actions to automatically trigger builds and deployments when changes are pushed to the repository.
