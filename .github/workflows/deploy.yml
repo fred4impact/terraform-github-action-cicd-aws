@@ -1,5 +1,5 @@
 name: Terraform aws CI CD pipeline deployment 
-run - name:  ${{ github.actor }} has triggard the pipeline
+run-name:  ${{ github.actor }} has triggard the pipeline
 
 on:
   push:
@@ -12,7 +12,7 @@ env:
   AWS_REGION: us-east-1
 
 jobs:
-  build - infrastructure:
+  build-infra:
     name: Terraform-AWS-CI-CD
     runs-on: ubuntu-latest
     steps:  
@@ -26,6 +26,10 @@ jobs:
         # Terraform Initializati
       - name: Terraform Init
         run: terraform init
+        working-directory: ./terra-vpc
+
+      - name: Terraform validate
+        run: terraform validate
         working-directory: ./terra-vpc
 
         # Terraform Plan
