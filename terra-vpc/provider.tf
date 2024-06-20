@@ -10,7 +10,6 @@ terraform {
     bucket         = "bilarn-terraform-bucket-state"
     key            = "website-project.tfstate"
     region         = "us-east-1"
-    profile         = "TESTING-AWS-GENERAL"
     encrypt        = false
   }
 
@@ -19,5 +18,4 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
-  profile = "TESTING-AWS-GENERAL"
 }
