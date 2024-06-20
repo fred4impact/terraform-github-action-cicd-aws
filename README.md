@@ -5,6 +5,6 @@ This project involves creating AWS infrastructure to deploy a web server using I
 
 The main objectives of this project were to:
 
-## Set up and configure Terraform for infrastructure management.
-## Write and manage Terraform modules to define resources like VPC, subnets, security groups, EC2 instances, and application load balancers across multiple availability zones.
-## Create a CI/CD pipeline using GitHub Actions to automatically trigger builds and deployments when changes are pushed to the repository.
+- Set up and configure Terraform for infrastructure management.
+- Write and manage Terraform modules to define resources like VPC, subnets, security groups, EC2 instances, and application load balancers across multiple availability zones.
+- Create a CI/CD pipeline using GitHub Actions to automatically trigger builds and deployments when changes are pushed to the repository.
