@@ -16,24 +16,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2 
+        uses: actions/checkout@v3  # Use the latest version
+      
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+      
+      - name: Display environment variables
+        run: env
+
       - name: Terraform Init
         run: terraform init
         working-directory: ./terra-vpc
+      
       - name: Terraform Validate
         run: terraform validate
         working-directory: ./terra-vpc
+      
       - name: Terraform Plan
         id: plan
-        run: terraform plan
+        run: terraform plan -out=tfplan
         working-directory: ./terra-vpc
+      
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve tfplan
         working-directory: ./terra-vpc
+        if: ${{ github.ref == 'refs/heads/main' }}
+      
+      # Optional: Only run destroy step when needed, e.g., triggered manually or on a specific branch
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
         working-directory: ./terra-vpc
+        if: ${{ github.event.inputs.destroy == 'true' }}
