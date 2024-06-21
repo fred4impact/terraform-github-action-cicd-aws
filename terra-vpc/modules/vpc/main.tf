@@ -49,7 +49,7 @@ resource "aws_route_table" "test_route_table" {
 }
 #Create Route Table Association
 resource "aws_route_table_association" "test_rta" {
-  count          = length(var.subnet_cidrs)
+  count          = length(aws_subnet.subnets)
   subnet_id      = aws_subnet.subnets[count.index].id
   route_table_id = aws_route_table.test_route_table.id
 }
